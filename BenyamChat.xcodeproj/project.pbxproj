@@ -10,7 +10,6 @@
 		FF58C0CA29339825007084C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0C929339825007084C3 /* AppDelegate.swift */; };
 		FF58C0CC29339825007084C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0CB29339825007084C3 /* SceneDelegate.swift */; };
 		FF58C0D129339825007084C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF58C0CF29339825007084C3 /* Main.storyboard */; };
-		FF58C0D329339827007084C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF58C0D229339827007084C3 /* Assets.xcassets */; };
 		FF58C0D629339827007084C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF58C0D429339827007084C3 /* LaunchScreen.storyboard */; };
 		FF58C0E429339987007084C3 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0E329339987007084C3 /* ConversationsViewController.swift */; };
 		FF58C0E629339AC1007084C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0E529339AC1007084C3 /* LoginViewController.swift */; };
@@ -19,6 +18,8 @@
 		FF58C0EC29339AE8007084C3 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0EB29339AE8007084C3 /* VideoPlayerViewController.swift */; };
 		FF58C0EF29339AFC007084C3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0EE29339AFC007084C3 /* ProfileViewController.swift */; };
 		FF58C0F129339B0E007084C3 /* BewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0F029339B0E007084C3 /* BewConversationViewController.swift */; };
+		FF58C0F62933BCA7007084C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF58C0F52933BCA7007084C3 /* Assets.xcassets */; };
+		FF58C0F82933BD40007084C3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0F72933BD40007084C3 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +27,6 @@
 		FF58C0C929339825007084C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF58C0CB29339825007084C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FF58C0D029339825007084C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FF58C0D229339827007084C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF58C0D529339827007084C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF58C0D729339827007084C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF58C0E329339987007084C3 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +36,8 @@
 		FF58C0EB29339AE8007084C3 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		FF58C0EE29339AFC007084C3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FF58C0F029339B0E007084C3 /* BewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BewConversationViewController.swift; sourceTree = "<group>"; };
+		FF58C0F52933BCA7007084C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF58C0F72933BD40007084C3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +75,8 @@
 				FF58C0DF29339905007084C3 /* Model */,
 				FF58C0DE293398FF007084C3 /* View */,
 				FF58C0DD293398F3007084C3 /* Controller */,
-				FF58C0D229339827007084C3 /* Assets.xcassets */,
 				FF58C0D729339827007084C3 /* Info.plist */,
+				FF58C0F52933BCA7007084C3 /* Assets.xcassets */,
 			);
 			path = BenyamChat;
 			sourceTree = "<group>";
@@ -83,8 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				FF58C0E329339987007084C3 /* ConversationsViewController.swift */,
-				FF58C0E529339AC1007084C3 /* LoginViewController.swift */,
-				FF58C0E729339ACB007084C3 /* RegisterViewController.swift */,
+				FF58C0F229339D33007084C3 /* Login */,
 				FF58C0E929339ADA007084C3 /* PhotoViewerViewController.swift */,
 				FF58C0EB29339AE8007084C3 /* VideoPlayerViewController.swift */,
 				FF58C0EE29339AFC007084C3 /* ProfileViewController.swift */,
@@ -121,6 +122,7 @@
 			children = (
 				FF58C0C929339825007084C3 /* AppDelegate.swift */,
 				FF58C0CB29339825007084C3 /* SceneDelegate.swift */,
+				FF58C0F72933BD40007084C3 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -131,6 +133,15 @@
 				FF58C0CF29339825007084C3 /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		FF58C0F229339D33007084C3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FF58C0E529339AC1007084C3 /* LoginViewController.swift */,
+				FF58C0E729339ACB007084C3 /* RegisterViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,7 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF58C0D629339827007084C3 /* LaunchScreen.storyboard in Resources */,
-				FF58C0D329339827007084C3 /* Assets.xcassets in Resources */,
+				FF58C0F62933BCA7007084C3 /* Assets.xcassets in Resources */,
 				FF58C0D129339825007084C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,6 +220,7 @@
 				FF58C0F129339B0E007084C3 /* BewConversationViewController.swift in Sources */,
 				FF58C0E429339987007084C3 /* ConversationsViewController.swift in Sources */,
 				FF58C0EC29339AE8007084C3 /* VideoPlayerViewController.swift in Sources */,
+				FF58C0F82933BD40007084C3 /* Extensions.swift in Sources */,
 				FF58C0CA29339825007084C3 /* AppDelegate.swift in Sources */,
 				FF58C0CC29339825007084C3 /* SceneDelegate.swift in Sources */,
 				FF58C0EF29339AFC007084C3 /* ProfileViewController.swift in Sources */,
@@ -367,6 +379,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -395,6 +408,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
