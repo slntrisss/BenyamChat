@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E29F513DF15B15E86224F8D /* Pods_BenyamChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E0948F327B5FDEFCD35CC17 /* Pods_BenyamChat.framework */; };
+		978BDCA364845905F0C478DC /* Pods_BenyamChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BABF8BBF54F5F669BDEA01 /* Pods_BenyamChat.framework */; };
 		FF58C0CA29339825007084C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0C929339825007084C3 /* AppDelegate.swift */; };
 		FF58C0CC29339825007084C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0CB29339825007084C3 /* SceneDelegate.swift */; };
 		FF58C0D129339825007084C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF58C0CF29339825007084C3 /* Main.storyboard */; };
@@ -26,9 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1907D105F98EA16800C25C3C /* Pods-BenyamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BenyamChat.debug.xcconfig"; path = "Target Support Files/Pods-BenyamChat/Pods-BenyamChat.debug.xcconfig"; sourceTree = "<group>"; };
-		4E0948F327B5FDEFCD35CC17 /* Pods_BenyamChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BenyamChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8751A58F76AC0D742CF455FC /* Pods-BenyamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BenyamChat.release.xcconfig"; path = "Target Support Files/Pods-BenyamChat/Pods-BenyamChat.release.xcconfig"; sourceTree = "<group>"; };
+		664410D1D435E7AEF5DB8523 /* Pods-BenyamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BenyamChat.release.xcconfig"; path = "Target Support Files/Pods-BenyamChat/Pods-BenyamChat.release.xcconfig"; sourceTree = "<group>"; };
+		B6A51B718B5067DC3CEF93CF /* Pods-BenyamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BenyamChat.debug.xcconfig"; path = "Target Support Files/Pods-BenyamChat/Pods-BenyamChat.debug.xcconfig"; sourceTree = "<group>"; };
+		E3BABF8BBF54F5F669BDEA01 /* Pods_BenyamChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BenyamChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF58C0C629339825007084C3 /* BenyamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BenyamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF58C0C929339825007084C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF58C0CB29339825007084C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E29F513DF15B15E86224F8D /* Pods_BenyamChat.framework in Frameworks */,
+				978BDCA364845905F0C478DC /* Pods_BenyamChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,16 +63,16 @@
 		0255A1D22BDE84A13CCA9A49 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1907D105F98EA16800C25C3C /* Pods-BenyamChat.debug.xcconfig */,
-				8751A58F76AC0D742CF455FC /* Pods-BenyamChat.release.xcconfig */,
+				B6A51B718B5067DC3CEF93CF /* Pods-BenyamChat.debug.xcconfig */,
+				664410D1D435E7AEF5DB8523 /* Pods-BenyamChat.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C1EBE124BC0C601E4C66F5E5 /* Frameworks */ = {
+		618D8EFC3A65C0C90A3266D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4E0948F327B5FDEFCD35CC17 /* Pods_BenyamChat.framework */,
+				E3BABF8BBF54F5F669BDEA01 /* Pods_BenyamChat.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -83,7 +83,7 @@
 				FF58C0C829339825007084C3 /* BenyamChat */,
 				FF58C0C729339825007084C3 /* Products */,
 				0255A1D22BDE84A13CCA9A49 /* Pods */,
-				C1EBE124BC0C601E4C66F5E5 /* Frameworks */,
+				618D8EFC3A65C0C90A3266D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,11 +181,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF58C0DA29339827007084C3 /* Build configuration list for PBXNativeTarget "BenyamChat" */;
 			buildPhases = (
-				4289D7B969DB23F7CF989008 /* [CP] Check Pods Manifest.lock */,
+				22BCA08686F3A2BB60130D26 /* [CP] Check Pods Manifest.lock */,
 				FF58C0C229339825007084C3 /* Sources */,
 				FF58C0C329339825007084C3 /* Frameworks */,
 				FF58C0C429339825007084C3 /* Resources */,
-				2F1C45F3B13336FA5D9E9EB6 /* [CP] Embed Pods Frameworks */,
+				57965B9BE2FF1F5B2FFB4750 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -244,24 +244,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2F1C45F3B13336FA5D9E9EB6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BenyamChat/Pods-BenyamChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BenyamChat/Pods-BenyamChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BenyamChat/Pods-BenyamChat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4289D7B969DB23F7CF989008 /* [CP] Check Pods Manifest.lock */ = {
+		22BCA08686F3A2BB60130D26 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -281,6 +264,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57965B9BE2FF1F5B2FFB4750 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BenyamChat/Pods-BenyamChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BenyamChat/Pods-BenyamChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BenyamChat/Pods-BenyamChat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -442,7 +442,7 @@
 		};
 		FF58C0DB29339827007084C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1907D105F98EA16800C25C3C /* Pods-BenyamChat.debug.xcconfig */;
+			baseConfigurationReference = B6A51B718B5067DC3CEF93CF /* Pods-BenyamChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -451,6 +451,8 @@
 				DEVELOPMENT_TEAM = 3RYA52PLG7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BenyamChat/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Please allow access to take profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -472,7 +474,7 @@
 		};
 		FF58C0DC29339827007084C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8751A58F76AC0D742CF455FC /* Pods-BenyamChat.release.xcconfig */;
+			baseConfigurationReference = 664410D1D435E7AEF5DB8523 /* Pods-BenyamChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -481,6 +483,8 @@
 				DEVELOPMENT_TEAM = 3RYA52PLG7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BenyamChat/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Please allow access to take profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
