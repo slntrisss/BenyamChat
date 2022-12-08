@@ -78,7 +78,7 @@ class RegisterViewController: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "person.circle")
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .darkGray
         imageView.contentMode = .scaleToFill
@@ -184,20 +184,36 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {authResult, error in
-            guard let result = authResult, error == nil else{
+        DatabaseManager.shared.userExists(with: email, completion: {[weak self] exists in
+            guard let strongSelf = self else{
                 print("Error creating user")
                 return
             }
+            guard !exists else{
+                //user already exists
+                strongSelf.alertUserLoginError(message: "Provided email address is already in use")
+                return
+            }
             
-            let user = result.user
-            print("Created user: \(user)")
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {authResult, error in
+                guard authResult != nil, error == nil else{
+                    print("Error creating user")
+                    return
+                }
+                
+                
+                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
+                                                                    lastName: lastName,
+                                                                    email: email))
+                
+                strongSelf.navigationController?.dismiss(animated: true)
+            })
         })
     }
     
-    private func alertUserLoginError(){
-        let alert = UIAlertController(title: "Not enough information",
-                                      message: "Please enter all information to create an account.",
+    private func alertUserLoginError(message: String = "Please enter all information to create an account."){
+        let alert = UIAlertController(title: "Woops",
+                                      message: message,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss",
                                       style: .cancel,
