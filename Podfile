@@ -14,4 +14,9 @@ pod 'Firebase/Database'
 # Google
 pod 'GoogleSignIn'
 
+pod 'MessageKit'
+pod 'RealmSwift'
+pod 'JGProgressHUD'
+pod 'SDWebImage'
+
 end
