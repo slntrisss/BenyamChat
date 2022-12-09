@@ -9,6 +9,7 @@ target 'BenyamChat' do
 
 pod 'Firebase/Auth'
 pod 'Firebase/Core'
+pod 'Firebase/Storage'
 pod 'Firebase/Database'
 
 # Google

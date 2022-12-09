@@ -178,7 +178,7 @@ class LoginViewController: UIViewController {
         // Start the sign in flow!
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) {[weak self] user, error in
             
-            guard error == nil else {
+            guard let strongSelf = self, error == nil else {
                 return
             }
             
@@ -195,9 +195,34 @@ class LoginViewController: UIViewController {
             
             DatabaseManager.shared.userExists(with: email, completion: { exists in
                 if !exists{
-                    DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
-                                                                        lastName: lastName,
-                                                                        email: email))
+                    let chatUser = ChatAppUser(firstName: firstName,
+                                               lastName: lastName,
+                                               email: email)
+                    DatabaseManager.shared.insertUser(with: chatUser, completeion: { success in
+                        if success{
+                            
+                            if ((user?.profile?.hasImage) != nil){
+                                guard let url = user?.profile?.imageURL(withDimension: 200) else{
+                                    return
+                                }
+                                
+                                URLSession.shared.dataTask(with: url, completionHandler: {data, _, _ in
+                                    guard let data = data else {
+                                        return
+                                    }
+                                    let fileName = chatUser.profileImageFileName
+                                    StorageManager.shared.uploadProfileImage(with: data, fileName: fileName, completion: {result in
+                                        switch result{
+                                        case .success(let downloadURL):
+                                            print(downloadURL)
+                                        case .failure(let error):
+                                            print("Storage manager error: \(error)")
+                                        }
+                                    })
+                                }).resume()
+                            }
+                        }
+                    })
                 }
             })
             
@@ -205,14 +230,14 @@ class LoginViewController: UIViewController {
                                                            accessToken: authentication.accessToken)
             
             FirebaseAuth.Auth.auth().signIn(with: credential, completion: { authResult, error in
-                guard let strongself = self, authResult != nil , error == nil else {
+                guard authResult != nil , error == nil else {
                     print("Failed to sign in with google credentials")
                     return
                 }
                 
                 print("Succesfully signed in with Google")
                 
-                strongself.navigationController?.dismiss(animated: true, completion: nil)
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             })
         }
     }

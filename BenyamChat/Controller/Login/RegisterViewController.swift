@@ -211,10 +211,25 @@ class RegisterViewController: UIViewController {
                 DispatchQueue.main.async {
                     strongSelf.spinner.dismiss(animated: true)
                 }
-                
-                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
-                                                                    lastName: lastName,
-                                                                    email: email))
+                let chatUser = ChatAppUser(firstName: firstName,
+                                           lastName: lastName,
+                                           email: email)
+                DatabaseManager.shared.insertUser(with: chatUser, completeion: {success in
+                    if success{
+                        guard let image = strongSelf.imageView.image, let data = image.pngData() else{
+                            return
+                        }
+                        let fileName = chatUser.profileImageFileName
+                        StorageManager.shared.uploadProfileImage(with: data, fileName: fileName, completion: {result in
+                            switch result{
+                            case .success(let downloadURL):
+                                print(downloadURL)
+                            case .failure(let error):
+                                print("Storage manager error: \(error)")
+                            }
+                        })
+                    }
+                })
                 
                 strongSelf.navigationController?.dismiss(animated: true)
             })
