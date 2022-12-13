@@ -155,6 +155,9 @@ class LoginViewController: UIViewController {
             
             let user = result.user
             print("Logged in user: \(user)")
+            
+            UserDefaults.standard.set(email, forKey: "email")
+            
             strongSelf.navigationController?.dismiss(animated: true)
         })
     }
@@ -236,6 +239,8 @@ class LoginViewController: UIViewController {
                 }
                 
                 print("Succesfully signed in with Google")
+                
+                UserDefaults.standard.set(email, forKey: "email")
                 
                 strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             })

@@ -10,7 +10,13 @@ import JGProgressHUD
 
 class NewConversationViewController: UIViewController {
     
+    public var completion: (([String: String]) -> ())?
+    
     private let spinner = JGProgressHUD(style: .dark)
+    
+    private var users = [[String: String]]()
+    private var hasFetched = false
+    private var results = [[String: String]]()
     
     private var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -37,6 +43,8 @@ class NewConversationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(noResultsLabel)
+        view.addSubview(tableView)
         searchBar.delegate = self
         navigationController?.navigationBar.topItem?.titleView = searchBar
         view.backgroundColor = .white
@@ -44,21 +52,105 @@ class NewConversationViewController: UIViewController {
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(dismissSelf))
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchBar.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        searchBar.becomeFirstResponder()
     }
     
     @objc private func dismissSelf(){
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
+        noResultsLabel.frame = CGRect(x: (view.width / 4),
+                                      y: (view.height - 200) / 2,
+                                      width: view.width / 2,
+                                      height: 200)
     }
 
 }
 
 extension NewConversationViewController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, !text.replacingOccurrences(of: " ", with: "").isEmpty else{
+            return
+        }
+        searchBar.resignFirstResponder()
+        results.removeAll()
+        spinner.show(in: view)
+        self.searchUsers(query: text)
+    }
+    
+    func searchUsers(query: String){
+        if hasFetched{
+            self.filterUsers(with: query)
+        }else{
+            DatabaseManager.shared.getAllUsers(completion: {[weak self]result in
+                switch result {
+                case .success(let users):
+                    self?.hasFetched = true
+                    self?.users = users
+                    self?.filterUsers(with: query)
+                case .failure(let error):
+                    print("Failed to fetch all users: \(error)")
+                }
+            })
+        }
+    }
+    func filterUsers(with term: String){
+        guard hasFetched else{
+            return
+        }
+        spinner.dismiss(animated: true)
+        let results = users.filter({
+            guard let user = $0["name"]?.lowercased() else{
+                return false
+            }
+            return user.hasPrefix(term.lowercased())
+        })
         
+        self.results = results
+        updateUI()
+    }
+    
+    func updateUI(){
+        if results.isEmpty{
+            noResultsLabel.isHidden = false
+            tableView.isHidden = true
+        }else{
+            noResultsLabel.isHidden = true
+            tableView.isHidden = false
+            tableView.reloadData()
+        }
+    }
+}
+
+extension NewConversationViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return results.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = results[indexPath.row]["name"]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let targetUserData = results[indexPath.row]
+        
+        dismiss(animated: true, completion: { [weak self] in
+            self?.completion?(targetUserData)
+        })
     }
 }
