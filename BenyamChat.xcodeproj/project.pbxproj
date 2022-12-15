@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		978BDCA364845905F0C478DC /* Pods_BenyamChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BABF8BBF54F5F669BDEA01 /* Pods_BenyamChat.framework */; };
+		FF4D9DF22949AEB500BBCBAA /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4D9DF12949AEB500BBCBAA /* ConversationTableViewCell.swift */; };
 		FF58C0CA29339825007084C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0C929339825007084C3 /* AppDelegate.swift */; };
 		FF58C0CC29339825007084C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C0CB29339825007084C3 /* SceneDelegate.swift */; };
 		FF58C0D129339825007084C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF58C0CF29339825007084C3 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		664410D1D435E7AEF5DB8523 /* Pods-BenyamChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BenyamChat.release.xcconfig"; path = "Target Support Files/Pods-BenyamChat/Pods-BenyamChat.release.xcconfig"; sourceTree = "<group>"; };
 		B6A51B718B5067DC3CEF93CF /* Pods-BenyamChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BenyamChat.debug.xcconfig"; path = "Target Support Files/Pods-BenyamChat/Pods-BenyamChat.debug.xcconfig"; sourceTree = "<group>"; };
 		E3BABF8BBF54F5F669BDEA01 /* Pods_BenyamChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BenyamChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4D9DF12949AEB500BBCBAA /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		FF58C0C629339825007084C3 /* BenyamChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BenyamChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF58C0C929339825007084C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF58C0CB29339825007084C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				FF58C0E229339937007084C3 /* Storyboard */,
 				FF58C0D429339827007084C3 /* LaunchScreen.storyboard */,
+				FF4D9DF12949AEB500BBCBAA /* ConversationTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				FF58C0CA29339825007084C3 /* AppDelegate.swift in Sources */,
 				FF58C0CC29339825007084C3 /* SceneDelegate.swift in Sources */,
 				FF58C0EF29339AFC007084C3 /* ProfileViewController.swift in Sources */,
+				FF4D9DF22949AEB500BBCBAA /* ConversationTableViewCell.swift in Sources */,
 				FF7FB188294363B000F4E599 /* ChatViewController.swift in Sources */,
 				FF58C0EA29339ADA007084C3 /* PhotoViewerViewController.swift in Sources */,
 				FF7FB18E2943998400F4E599 /* StorageManager.swift in Sources */,
