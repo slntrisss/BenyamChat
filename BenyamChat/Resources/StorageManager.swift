@@ -14,6 +14,7 @@ final class StorageManager{
     
     private let storage = Storage.storage().reference()
     
+    ///Uploads profile picture to the database
     public func uploadProfileImage(with data: Data, fileName: String, completion: @escaping (Result<String, Error>) -> ()){
         storage.child("images/\(fileName)").putData(data, metadata: nil, completion: { [weak self] metadata, error in
             guard error == nil, let strongSelf = self else{
@@ -23,6 +24,30 @@ final class StorageManager{
             }
             
             strongSelf.storage.child("images/\(fileName)").downloadURL(completion: {url, error in
+                guard let url = url else{
+                    print("Failed to get dowload url back")
+                    completion(.failure(StorageErrors.failedToGetDownloadUrl))
+                    return
+                }
+                
+                let urlString = url.absoluteString
+                print("Download url returned: \(urlString)")
+                completion(.success(urlString))
+            })
+            
+        })
+    }
+    
+    ///Uploads message image data to the database
+    public func uploadMessagePicture(with data: Data, fileName: String, completion: @escaping (Result<String, Error>) -> ()){
+        storage.child("message_images/\(fileName)").putData(data, metadata: nil, completion: { [weak self] metadata, error in
+            guard error == nil, let strongSelf = self else{
+                print("Failed to upload message image")
+                completion(.failure(StorageErrors.failedToUpload))
+                return
+            }
+            
+            strongSelf.storage.child("message_images/\(fileName)").downloadURL(completion: {url, error in
                 guard let url = url else{
                     print("Failed to get dowload url back")
                     completion(.failure(StorageErrors.failedToGetDownloadUrl))
