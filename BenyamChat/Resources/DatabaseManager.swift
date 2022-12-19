@@ -337,7 +337,18 @@ extension DatabaseManager{
                                       placeholderImage: placeholder,
                                       size: CGSize(width: 300, height: 300))
                     kind = .photo(media)
-                }else{
+                }else if type == "video"{
+                    guard let videoUrl = URL(string: content),
+                          let placeholder = UIImage(named: "darkness") else{
+                        return nil
+                    }
+                    let media = Media(url: videoUrl,
+                                      image: nil,
+                                      placeholderImage: placeholder,
+                                      size: CGSize(width: 300, height: 300))
+                    kind = .video(media)
+                }
+                else{
                     kind = .text(content)
                 }
                 
@@ -375,12 +386,15 @@ extension DatabaseManager{
                 newMessage = text
             case .attributedText(_):
                 break
-            case .photo(let mediaAitem):
-                if let photoMessageUrl = mediaAitem.url?.absoluteString{
+            case .photo(let mediaItem):
+                if let photoMessageUrl = mediaItem.url?.absoluteString{
                     newMessage = photoMessageUrl
                 }
                 break
-            case .video(_):
+            case .video(let mediaItem):
+                if let photoMessageUrl = mediaItem.url?.absoluteString{
+                    newMessage = photoMessageUrl
+                }
                 break
             case .location(_):
                 break
@@ -488,6 +502,40 @@ extension DatabaseManager{
                 })
             })
         })
+    }
+    
+    public func deleteConversation(conversationId: String, completion: @escaping (Bool) -> ()){
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else{
+            return
+        }
+        print("About to delete conversation with id: \(conversationId)")
+        let safeEmail = safeEmail(emailAddress: email)
+        let ref = database.child("\(safeEmail)/conversations")
+        ref.observeSingleEvent(of: .value) { snapshot in
+            if var conversations = snapshot.value as? [[String: Any]] {
+                var indexToRemove = 0
+                
+                for conversation in conversations{
+                    if let id = conversation["id"] as? String, id == conversationId{
+                        print("found conversation to delete")
+                        break
+                    }
+                    indexToRemove += 1
+                }
+                
+                conversations.remove(at: indexToRemove)
+                ref.setValue(conversations) { error, _ in
+                    guard error == nil else{
+                        completion(false)
+                        print("Failed to delete conversation")
+                        return
+                    }
+                    print("Conversation deleted")
+                    completion(true)
+                }
+            }
+            
+        }
     }
 }
 

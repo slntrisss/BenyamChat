@@ -25,6 +25,7 @@
 		FF7FB188294363B000F4E599 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FB187294363B000F4E599 /* ChatViewController.swift */; };
 		FF7FB18A29436D0300F4E599 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FB18929436D0300F4E599 /* NewConversationViewController.swift */; };
 		FF7FB18E2943998400F4E599 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FB18D2943998400F4E599 /* StorageManager.swift */; };
+		FFDA7AF12950E893001670A9 /* NewConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDA7AF02950E893001670A9 /* NewConversationCell.swift */; };
 		FFFC52F929394641004CA5D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFFC52F829394641004CA5D6 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		FF7FB187294363B000F4E599 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FF7FB18929436D0300F4E599 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		FF7FB18D2943998400F4E599 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		FFDA7AF02950E893001670A9 /* NewConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationCell.swift; sourceTree = "<group>"; };
 		FFFC52F829394641004CA5D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,7 @@
 				FF58C0E229339937007084C3 /* Storyboard */,
 				FF58C0D429339827007084C3 /* LaunchScreen.storyboard */,
 				FF4D9DF12949AEB500BBCBAA /* ConversationTableViewCell.swift */,
+				FFDA7AF02950E893001670A9 /* NewConversationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,7 +197,7 @@
 				FF58C0C229339825007084C3 /* Sources */,
 				FF58C0C329339825007084C3 /* Frameworks */,
 				FF58C0C429339825007084C3 /* Resources */,
-				57965B9BE2FF1F5B2FFB4750 /* [CP] Embed Pods Frameworks */,
+				8B63B636CA528ED67AA385A3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -275,7 +278,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		57965B9BE2FF1F5B2FFB4750 /* [CP] Embed Pods Frameworks */ = {
+		8B63B636CA528ED67AA385A3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -300,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF58C0E629339AC1007084C3 /* LoginViewController.swift in Sources */,
+				FFDA7AF12950E893001670A9 /* NewConversationCell.swift in Sources */,
 				FF5B45DE29410C5F00F7CAB8 /* DatabaseManager.swift in Sources */,
 				FF58C0E829339ACB007084C3 /* RegisterViewController.swift in Sources */,
 				FF7FB18A29436D0300F4E599 /* NewConversationViewController.swift in Sources */,
@@ -393,6 +397,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -446,6 +451,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -458,9 +464,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_SKIP_APP_STORE_DEPLOYMENT = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3RYA52PLG7;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BenyamChat/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Please allow access to take profile picture";
@@ -470,7 +478,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -478,6 +486,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.benyam.BenyamChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -490,9 +499,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_SKIP_APP_STORE_DEPLOYMENT = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3RYA52PLG7;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BenyamChat/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Please allow access to take profile picture";
@@ -502,7 +513,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -510,6 +521,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.benyam.BenyamChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

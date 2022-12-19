@@ -62,6 +62,30 @@ final class StorageManager{
         })
     }
     
+    ///Uploads message video data to the database
+    public func uploadMessageURL(with fileUrl: URL, fileName: String, completion: @escaping (Result<String, Error>) -> ()){
+        storage.child("message_video/\(fileName)").putFile(from: fileUrl, metadata: nil, completion: { [weak self] metadata, error in
+            guard error == nil, let strongSelf = self else{
+                print("Failed to upload message video")
+                completion(.failure(StorageErrors.failedToUpload))
+                return
+            }
+            
+            strongSelf.storage.child("message_video/\(fileName)").downloadURL(completion: {url, error in
+                guard let url = url else{
+                    print("Failed to get dowload url back")
+                    completion(.failure(StorageErrors.failedToGetDownloadUrl))
+                    return
+                }
+                
+                let urlString = url.absoluteString
+                print("Download url returned: \(urlString)")
+                completion(.success(urlString))
+            })
+            
+        })
+    }
+    
     public enum StorageErrors: Error{
         case failedToUpload
         case failedToGetDownloadUrl
