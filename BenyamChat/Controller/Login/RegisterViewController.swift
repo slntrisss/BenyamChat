@@ -29,7 +29,7 @@ class RegisterViewController: UIViewController {
         textField.placeholder = "First Name"
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         textField.leftViewMode = .always
-        textField.backgroundColor = .clear
+        textField.backgroundColor = .secondarySystemBackground
         return textField
     }()
     
@@ -44,7 +44,7 @@ class RegisterViewController: UIViewController {
         textField.placeholder = "Last Name"
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         textField.leftViewMode = .always
-        textField.backgroundColor = .clear
+        textField.backgroundColor = .secondarySystemBackground
         return textField
     }()
     
@@ -59,7 +59,7 @@ class RegisterViewController: UIViewController {
         textField.placeholder = "Enter email"
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         textField.leftViewMode = .always
-        textField.backgroundColor = .clear
+        textField.backgroundColor = .secondarySystemBackground
         return textField
     }()
     
@@ -74,7 +74,7 @@ class RegisterViewController: UIViewController {
         textField.placeholder = "Enter password"
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         textField.leftViewMode = .always
-        textField.backgroundColor = .clear
+        textField.backgroundColor = .secondarySystemBackground
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -105,7 +105,7 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Log in"
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         emailField.delegate = self
         passwordField.delegate = self
@@ -228,6 +228,9 @@ class RegisterViewController: UIViewController {
                                 print("Storage manager error: \(error)")
                             }
                         })
+                        
+                        UserDefaults.standard.setValue("\(firstName) \(lastName)", forKey: "name")
+                        UserDefaults.standard.setValue(email, forKey: "email")
                     }
                 })
                 

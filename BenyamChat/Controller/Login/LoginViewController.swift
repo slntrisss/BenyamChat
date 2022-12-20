@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
         textField.placeholder = "Enter email"
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         textField.leftViewMode = .always
-        textField.backgroundColor = .clear
+        textField.backgroundColor = .secondarySystemBackground
         return textField
     }()
     
@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
         textField.placeholder = "Enter password"
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         textField.leftViewMode = .always
-        textField.backgroundColor = .clear
+        textField.backgroundColor = .secondarySystemBackground
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Log in"
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
                                                             style: .done,
@@ -165,13 +165,13 @@ class LoginViewController: UIViewController {
                           let lastName = userData["last_name"] as? String else {
                         return
                     }
-                    UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
+                    UserDefaults.standard.setValue("\(firstName) \(lastName)", forKey: "name")
                 case .failure(let error):
                     print("Failed to fetch user name: \(error)")
                 }
             })
             
-            UserDefaults.standard.set(email, forKey: "email")
+            UserDefaults.standard.setValue(email, forKey: "email")
             
             strongSelf.navigationController?.dismiss(animated: true)
         })
@@ -255,8 +255,8 @@ class LoginViewController: UIViewController {
                 
                 print("Succesfully signed in with Google")
                 
-                UserDefaults.standard.set(email, forKey: "email")
-                UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
+                UserDefaults.standard.setValue(email, forKey: "email")
+                UserDefaults.standard.setValue("\(firstName) \(lastName)", forKey: "name")
                 
                 strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             })

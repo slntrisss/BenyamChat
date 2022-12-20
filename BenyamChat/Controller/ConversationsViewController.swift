@@ -52,7 +52,6 @@ class ConversationsViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(noConversationLabel)
         setupTableView()
-        fetchConversations()
         startListenningForConversations()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
                                                             target: self,
@@ -83,13 +82,19 @@ class ConversationsViewController: UIViewController {
             case .success(let conversations):
                 print("Successfully got conversation models")
                 guard !conversations.isEmpty else{
+                    self?.tableView.isHidden = true
+                    self?.noConversationLabel.isHidden = false
                     return
                 }
+                self?.tableView.isHidden = false
+                self?.noConversationLabel.isHidden = true
                 self?.conversations = conversations
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
+                self?.tableView.isHidden = true
+                self?.noConversationLabel.isHidden = false
                 print("Failed to fetch all user conversations: \(error)")
             }
         })
@@ -98,6 +103,10 @@ class ConversationsViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
+        noConversationLabel.frame = CGRect(x: 10,
+                                           y: (view.height - 100) / 2,
+                                           width: view.width - 20,
+                                           height: 100)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -110,7 +119,20 @@ class ConversationsViewController: UIViewController {
         let vc = NewConversationViewController()
         vc.completion = { [weak self] result in
             print("\(result)")
-            self?.createNewConversation(result: result)
+            
+            let currentConversations = self?.conversations
+            
+            if let targetConversation = currentConversations?.first(where: {
+                $0.otherUSerEmail == DatabaseManager.shared.safeEmail(emailAddress: result.email)
+            }){
+                let vc = ChatViewController(with: targetConversation.otherUSerEmail, id: targetConversation.id)
+                vc.title = targetConversation.name
+                vc.isNewConversation = false
+                vc.navigationItem.largeTitleDisplayMode = .never
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }else{
+                self?.createNewConversation(result: result)
+            }
         }
         let navBar = UINavigationController(rootViewController: vc)
         present(navBar, animated: true)
@@ -118,12 +140,24 @@ class ConversationsViewController: UIViewController {
     
     private func createNewConversation(result: SearchResult){
         let name = result.name
-        let email = result.email
-        let vc = ChatViewController(with: email, id: nil)
-        vc.title = name
-        vc.isNewConversation = true
-        vc.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.pushViewController(vc, animated: true)
+        let email = DatabaseManager.shared.safeEmail(emailAddress: result.email)
+        
+        DatabaseManager.shared.conversationExists(with: email, completion: {[weak self] result in
+            switch result{
+            case .success(let id):
+                let vc = ChatViewController(with: email, id: id)
+                vc.title = name
+                vc.isNewConversation = false
+                vc.navigationItem.largeTitleDisplayMode = .never
+                self?.navigationController?.pushViewController(vc, animated: true)
+            case .failure(_):
+                let vc = ChatViewController(with: email, id: nil)
+                vc.title = name
+                vc.isNewConversation = true
+                vc.navigationItem.largeTitleDisplayMode = .never
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+        })
     }
     
     private func validateUser(){
@@ -138,10 +172,6 @@ class ConversationsViewController: UIViewController {
     private func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    private func fetchConversations(){
-        tableView.isHidden = false
     }
 
 }
@@ -162,6 +192,10 @@ extension ConversationsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let conversationModel = conversations[indexPath.row]
+        openConversation(conversationModel)
+    }
+    
+    func openConversation(_ conversationModel: Conversation){
         let vc = ChatViewController(with: conversationModel.otherUSerEmail, id: conversationModel.id)
         vc.title = conversationModel.name
         vc.navigationItem.largeTitleDisplayMode = .never

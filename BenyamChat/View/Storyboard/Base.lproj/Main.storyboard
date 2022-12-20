@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qVv-d2-0Ui">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -77,7 +78,7 @@
         <scene sceneID="uEb-lN-0O0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lmo-Nq-47Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chats" id="t8m-la-2xK"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="message.fill" catalog="system" id="t8m-la-2xK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="nSU-l4-u60">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -96,7 +97,7 @@
         <scene sceneID="74k-SW-Uyt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aMd-Tk-wHY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="dhy-p4-CBD"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="person.circle.fill" catalog="system" id="dhy-p4-CBD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="rKY-GO-7ll">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -113,6 +114,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="message.fill" catalog="system" width="128" height="113"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
