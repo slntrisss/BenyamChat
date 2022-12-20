@@ -9,19 +9,6 @@ import UIKit
 import FirebaseAuth
 import JGProgressHUD
 
-struct Conversation{
-    let id: String
-    let name: String
-    let otherUSerEmail: String
-    let latestMessage: LatestMessage
-}
-
-struct LatestMessage{
-    let date: String
-    let message: String
-    let isRead: Bool
-}
-
 class ConversationsViewController: UIViewController {
     
     private var conversations = [Conversation]()
@@ -214,10 +201,11 @@ extension ConversationsViewController: UITableViewDelegate, UITableViewDataSourc
         if editingStyle == .delete{
             let conversationId = conversations[indexPath.row].id
             tableView.beginUpdates()
-            DatabaseManager.shared.deleteConversation(conversationId: conversationId) { [weak self] succes in
-                if succes{
-                    self?.conversations.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
+            self.conversations.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            DatabaseManager.shared.deleteConversation(conversationId: conversationId) { succes in
+                if !succes{
+                    print("Failed to delete conversation")
                 }
             }
             

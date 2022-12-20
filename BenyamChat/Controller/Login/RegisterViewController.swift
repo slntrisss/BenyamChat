@@ -292,8 +292,8 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         
         actionSheet.addAction(UIAlertAction(title: "Choose a photo",
                                             style: .default,
-                                            handler: {_ in
-            self.presentPhotoPicker()
+                                            handler: {[weak self]_ in
+            self?.presentPhotoPicker()
         }))
         
         present(actionSheet, animated: true)
