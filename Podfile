@@ -18,7 +18,6 @@ pod 'Firebase/Crashlytics'
 pod 'GoogleSignIn'
 
 pod 'MessageKit'
-pod 'RealmSwift'
 pod 'JGProgressHUD'
 pod 'SDWebImage'
 
